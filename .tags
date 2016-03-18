@@ -1,0 +1,22 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	0	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+SensuPluginsTelegram	/code/sensu-plugins-telegram/lib/sensu-plugins-telegram/version.rb	/^module SensuPluginsTelegram$/;"	module	line:1
+Version	/code/sensu-plugins-telegram/lib/sensu-plugins-telegram/version.rb	/^  module Version$/;"	module	line:2	class:SensuPluginsTelegram
+TelegramHandler	/code/sensu-plugins-telegram/bin/handler-telegram.rb	/^class TelegramHandler < Sensu::Handler$/;"	class	line:37
+chat_id	/code/sensu-plugins-telegram/bin/handler-telegram.rb	/^  def chat_id$/;"	method	line:39	class:TelegramHandler
+bot_token	/code/sensu-plugins-telegram/bin/handler-telegram.rb	/^  def bot_token$/;"	method	line:43	class:TelegramHandler
+error_file	/code/sensu-plugins-telegram/bin/handler-telegram.rb	/^  def error_file$/;"	method	line:47	class:TelegramHandler
+event_name	/code/sensu-plugins-telegram/bin/handler-telegram.rb	/^  def event_name$/;"	method	line:51	class:TelegramHandler
+action_name	/code/sensu-plugins-telegram/bin/handler-telegram.rb	/^  def action_name$/;"	method	line:55	class:TelegramHandler
+telegram_url	/code/sensu-plugins-telegram/bin/handler-telegram.rb	/^  def telegram_url$/;"	method	line:64	class:TelegramHandler
+build_message	/code/sensu-plugins-telegram/bin/handler-telegram.rb	/^  def build_message$/;"	method	line:68	class:TelegramHandler
+params	/code/sensu-plugins-telegram/bin/handler-telegram.rb	/^  def params$/;"	method	line:78	class:TelegramHandler
+handle_error	/code/sensu-plugins-telegram/bin/handler-telegram.rb	/^  def handle_error(exception)$/;"	method	line:87	class:TelegramHandler
+clear_error	/code/sensu-plugins-telegram/bin/handler-telegram.rb	/^  def clear_error$/;"	method	line:95	class:TelegramHandler
+handle	/code/sensu-plugins-telegram/bin/handler-telegram.rb	/^  def handle$/;"	method	line:99	class:TelegramHandler
+check_status	/code/sensu-plugins-telegram/bin/handler-telegram.rb	/^  def check_status$/;"	method	line:111	class:TelegramHandler
+translate_status	/code/sensu-plugins-telegram/bin/handler-telegram.rb	/^  def translate_status$/;"	method	line:115	class:TelegramHandler
