@@ -66,11 +66,11 @@ class TelegramHandler < Sensu::Handler
   end
 
   def bot_token
-    settings['telegram']['bot_token']
+    @event['bot_token'] || settings['telegram']['bot_token']
   end
 
   def error_file
-    settings['telegram']['error_file_location']
+    @event['error_file_location'] || settings['telegram']['error_file_location']
   end
 
   def event_name
