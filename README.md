@@ -15,7 +15,20 @@ This plugin provides a handler to send notifications to a Telegram chat.
 
 ## Usage
 
-This gem requires a JSON configuration file with the following contents:
+After installation, you have to set up a `pipe` type handler, like so:
+
+```json
+{
+  "handlers": {
+    "telegram": {
+      "type": "pipe",
+      "command": "handler-telegram.rb"
+    }
+  }
+}
+```
+
+This gem also expects a JSON configuration file with the following contents:
 
 ```json
 {
@@ -39,10 +52,53 @@ This gem requires a JSON configuration file with the following contents:
   be written to a file in this location. You can then monitor this
   location to detect any errors with the Telegram handler.
 
-If you want to send some events to one chat, and other events to another
-chat, you can directly add the `chat_id` to the event data (the `@event` hash)
-using a mutator. Then, create one handler specification for each channel,
-specifying the corresponding mutator. For example:
+### Advanced configuration
+
+By default, the handler assumes that the config parameters are specified in the
+`telegram` top-level key of the JSON, as shown above. You also have the option
+to make the handler fetch the config from a different key. To do this, pass the
+`-j` option to the handler with the name of the desired key You can define
+multiple handlers, and each handler can send notifications to a different chat
+and from a different bot. You could, for example, have critical and non-critical
+Telegram groups, and send the notifications to one or the other depending on the
+check. For example:
+
+```json
+{
+  "handlers": {
+    "critical_telegram": {
+      "type": "pipe",
+      "command": "handler-telegram.rb -j critical_telegram_options"
+    },
+    "non_critical_telegram": {
+      "type": "pipe",
+      "command": "handler-telegram.rb -j non_critical_telegram_options"
+    }
+  }
+}
+```
+
+This example will fetch the options from a JSON like this:
+
+```json
+{
+  "telegram": {
+    "bot_token": "YOUR_BOT_TOKEN"
+  },
+  "critical_telegram_options": {
+    "chat_id": -123123
+  },
+  "non_critical_telegram_options": {
+    "chat_id": -456456
+  }
+}
+```
+
+As you can see, you can specify the default config in the `telegram` key, and
+the rest of the config in their own custom keys.
+
+You can also directly add the configuration parameters to the event data using a
+mutator. For example:
 
 ```ruby
 #!/usr/bin/env ruby
@@ -53,8 +109,13 @@ event.merge!(chat_id: -456456)
 puts JSON.dump(event)
 ```
 
-You can also specify the `bot_token` and `error_file_location` options
-directly in the event data.
+### Configuration precedence
+
+The handler will load the config as follows (from least to most priority):
+
+* Default `telegram` key
+* Custom config keys
+* Event data
 
 ## Installation
 

@@ -41,16 +41,30 @@ require 'restclient'
 require 'cgi'
 
 class TelegramHandler < Sensu::Handler
+  option :json_config,
+         description: 'Config name',
+         short: '-j config_key',
+         long: '--json_config config_key',
+         required: false
+
   def chat_id
-    @event['chat_id'] || settings['telegram']['chat_id']
+    fetch_setting 'chat_id'
   end
 
   def bot_token
-    @event['bot_token'] || settings['telegram']['bot_token']
+    fetch_setting 'bot_token'
   end
 
   def error_file
-    @event['error_file_location'] || settings['telegram']['error_file_location']
+    fetch_setting 'error_file_location'
+  end
+
+  def fetch_setting(setting_key)
+    config_key = config[:json_config]
+
+    value = @event[setting_key]
+    value ||= settings[config_key][setting_key] if config_key
+    value || settings['telegram'][setting_key]
   end
 
   def event_name
