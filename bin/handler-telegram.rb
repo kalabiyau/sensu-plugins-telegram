@@ -100,7 +100,7 @@ class TelegramHandler < Sensu::Handler
       "<b>Alert #{action_name}</b> #{action_icon}",
       "<b>Host:</b> #{client_name}",
       "<b>Check:</b> #{check_name}",
-      "<b>Status:</b> #{translate_status} #{status_icon}",
+      "<b>Status:</b> #{status} #{status_icon}",
       "<b>Output:</b> <code>#{output}</code>"
     ].join("\n")
   end
@@ -140,7 +140,7 @@ class TelegramHandler < Sensu::Handler
     @event['check']['status']
   end
 
-  def translate_status
+  def status
     status = {
       0 => 'OK',
       1 => 'Warning',
