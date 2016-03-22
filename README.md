@@ -40,7 +40,7 @@ This gem requires a JSON configuration file with the following contents:
   location to detect any errors with the Telegram handler.
 
 If you want to send some events to one chat, and other events to another
-chat, you can directly add the chat_id to the event data (the `@event` hash)
+chat, you can directly add the `chat_id` to the event data (the `@event` hash)
 using a mutator. Then, create one handler specification for each channel,
 specifying the corresponding mutator. For example:
 
@@ -52,6 +52,9 @@ event = JSON.parse(STDIN.read, :symbolize_names => true)
 event.merge!(chat_id: -456456)
 puts JSON.dump(event)
 ```
+
+You can also specify the `bot_token` and `error_file_location` options
+directly in the event data.
 
 ## Installation
 
