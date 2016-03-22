@@ -58,32 +58,58 @@
 require 'rubygems' if RUBY_VERSION < '1.9.0'
 require 'sensu-handler'
 require 'restclient'
+require 'cgi'
 
 class TelegramHandler < Sensu::Handler
 
   def chat_id
-    @event['chat_id'] || settings['telegram']['chat_id']
+    @event["chat_id"] || settings["telegram"]["chat_id"]
   end
 
   def bot_token
-    @event['bot_token'] || settings['telegram']['bot_token']
+    @event["bot_token"] || settings["telegram"]["bot_token"]
   end
 
   def error_file
-    @event['error_file_location'] || settings['telegram']['error_file_location']
+    @event["error_file_location"] || settings["telegram"]["error_file_location"]
   end
 
   def event_name
-    @event['client']['name'] + '/' + @event['check']['name']
+    client_name + "/" + check_name
   end
 
   def action_name
     actions = {
-      'create' => 'Created',
-      'resolve' => 'Resolved',
-      'flapping' => 'Flapping'
+      "create" => "Created",
+      "resolve" => "Resolved",
+      "flapping" => "Flapping"
     }
-    actions[@event['action']]
+    actions[@event["action"]]
+  end
+
+  def action_icon
+    icons = {
+      "create" => "\xF0\x9F\x98\xB1",
+      "resolve" => "\xF0\x9F\x98\x8D",
+      "flapping" => "\xF0\x9F\x90\x9D"
+    }
+    icons[@event["action"]]
+  end
+
+  def client_name
+    escape_html @event["client"]["name"]
+  end
+
+  def check_name
+    escape_html @event["check"]["name"]
+  end
+
+  def output
+    escape_html @event["check"]["output"]
+  end
+
+  def escape_html(string)
+    CGI.escapeHTML(string)
   end
 
   def telegram_url
@@ -92,11 +118,11 @@ class TelegramHandler < Sensu::Handler
 
   def build_message
     [
-      "<b>Alert #{action_name}</b>",
-      "<b>Host:</b> #{@event['client']['name']}",
-      "<b>Check:</b> #{@event['check']['name']}",
-      "<b>Status:</b> #{translate_status}",
-      "<b>Output:</b> #{@event['check']['output']}"
+      "<b>Alert #{action_name}</b> #{action_icon}",
+      "<b>Host:</b> #{client_name}",
+      "<b>Check:</b> #{check_name}",
+      "<b>Status:</b> #{translate_status} #{status_icon}",
+      "<b>Output:</b> <code>#{output}</code>"
     ].join("\n")
   end
 
@@ -104,7 +130,7 @@ class TelegramHandler < Sensu::Handler
     {
       chat_id: chat_id,
       text: build_message,
-      parse_mode: 'HTML',
+      parse_mode: "HTML",
       disable_web_page_preview: true
     }
   end
@@ -118,7 +144,7 @@ class TelegramHandler < Sensu::Handler
   end
 
   def clear_error
-    File.delete(error_file) if File.exist?(error_file)
+    File.delete(error_file) if error_file && File.exist?(error_file)
   end
 
   def handle
@@ -139,11 +165,21 @@ class TelegramHandler < Sensu::Handler
 
   def translate_status
     status = {
-      0 => 'OK',
-      1 => 'Warning',
-      2 => 'Critical',
-      3 => 'Unknown'
+      0 => "OK",
+      1 => "Warning",
+      2 => "Critical",
+      3 => "Unknown"
     }
     status[check_status.to_i]
+  end
+
+  def status_icon
+    icons = {
+      0 => "\xF0\x9F\x91\x8D",
+      1 => "\xE2\x9A\xA1",
+      2 => "\xF0\x9F\x9A\xA8",
+      3 => "\xF0\x9F\x8C\x80"
+    }
+    icons[check_status.to_i]
   end
 end
