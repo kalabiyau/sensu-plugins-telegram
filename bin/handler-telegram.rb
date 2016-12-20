@@ -39,6 +39,7 @@ require 'rubygems' if RUBY_VERSION < '1.9.0'
 require 'sensu-handler'
 require 'restclient'
 require 'cgi'
+require 'erb'
 
 class TelegramHandler < Sensu::Handler
   option :json_config,
@@ -110,12 +111,26 @@ class TelegramHandler < Sensu::Handler
   end
 
   def build_message
+    template_file = fetch_setting 'message_template_file'
+    if !template_file.nil?
+      template = File.read(template_file)
+    else
+      template = fetch_setting 'message_template'
+      template ||= default_message
+    end
+
+    message = ERB.new(template).result(binding)
+
+    message
+  end
+
+  def default_message
     [
-      "<b>Alert #{action_name}</b> #{action_icon}",
-      "<b>Host:</b> #{client_name}",
-      "<b>Check:</b> #{check_name}",
-      "<b>Status:</b> #{status} #{status_icon}",
-      "<b>Output:</b> <code>#{output}</code>"
+      '<b>Alert <%= action_name %></b> <%= action_icon %>',
+      '<b>Hostess:</b> <%= client_name %>',
+      '<b>Check:</b> <%= check_name %>',
+      '<b>Status:</b> <%= status %> <%= status_icon %>',
+      '<b>Output:</b> <code><%= output %></code>'
     ].join("\n")
   end
 

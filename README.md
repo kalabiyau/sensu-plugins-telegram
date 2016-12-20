@@ -51,6 +51,18 @@ This gem also expects a JSON configuration file with the following contents:
   message to Telegram (ie. connectivity issues), the exception mesage will
   be written to a file in this location. You can then monitor this
   location to detect any errors with the Telegram handler.
+- `message_template` (optional): An ERB template to use to format messages
+  instead of the default. Supports the following variables:
+  - `action_name`
+  - `action_icon`
+  - `client_name`
+  - `check_name`
+  - `status`
+  - `status_icon`
+  - `output`
+- `message_template_file` (optional): A file to read an ERB template from to
+  format messages. Supports the same variables as `message_template`.
+
 
 ### Advanced configuration
 
