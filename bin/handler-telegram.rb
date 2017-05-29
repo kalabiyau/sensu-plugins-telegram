@@ -127,7 +127,7 @@ class TelegramHandler < Sensu::Handler
   def default_message
     [
       '<b>Alert <%= action_name %></b> <%= action_icon %>',
-      '<b>Hostess:</b> <%= client_name %>',
+      '<b>Host:</b> <%= client_name %>',
       '<b>Check:</b> <%= check_name %>',
       '<b>Status:</b> <%= status %> <%= status_icon %>',
       '<b>Output:</b> <code><%= output %></code>'
