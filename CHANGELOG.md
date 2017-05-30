@@ -4,6 +4,11 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 This CHANGELOG follows the format listed at [Keep A Changelog](http://keepachangelog.com/)
 
 ## [Unreleased]
+## Breaking Change
+- removed ruby 1.9x support
+
+## Changes
+- updated authors, email, homepage in .gemspec
 ## [1.0.1] - 2017-05-29
 ### Changed
 - just fixing the ruby api key in .travis.yml for rubygems

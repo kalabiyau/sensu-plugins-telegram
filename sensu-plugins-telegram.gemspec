@@ -3,35 +3,34 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
 require 'date'
 
-if RUBY_VERSION < '2.0.0'
-  require 'sensu-plugins-telegram'
-else
-  require_relative 'lib/sensu-plugins-telegram'
-end
-
-# pvt_key = 'certs/gem-private_key.pem'
+require_relative 'lib/sensu-plugins-telegram'
 
 Gem::Specification.new do |s|
-  s.authors                = ['Hernan Schmidt']
+  s.authors = [
+    'Hernan Schmidt',
+    'Sensu-Plugins and contributors'
+  ]
 
   s.date                   = Date.today.to_s
   s.description            = 'Sensu plugins for interfacing with Telegram messenger'
-  s.email                  = '<hschmidt@suse.de>'
+  s.email                  = [
+    'hschmidt@suse.de',
+    'sensu-users@googlegroups.com'
+  ]
   s.executables            = Dir.glob('bin/**/*.rb').map { |file| File.basename(file) }
   s.files                  = Dir.glob('{bin,lib}/**/*') + %w(LICENSE README.md CHANGELOG.md)
-  s.homepage               = 'https://github.com/lagartoflojo/sensu-plugins-telegram'
+  s.homepage               = 'https://github.com/sensu-plugins/sensu-plugins-telegram'
   s.license                = 'MIT'
   s.metadata               = { 'maintainer'         => 'sensu-plugin',
                                'development_status' => 'active',
                                'production_status'  => 'unstable - testing recommended',
                                'release_draft'      => 'false',
-                               'release_prerelease' => 'false'
-  }
+                               'release_prerelease' => 'false' }
   s.name                   = 'sensu-plugins-telegram'
   s.platform               = Gem::Platform::RUBY
   s.post_install_message   = 'You can use the embedded Ruby by setting EMBEDDED_RUBY=true in /etc/default/sensu'
   s.require_paths          = ['lib']
-  s.required_ruby_version  = '>= 1.9.3'
+  s.required_ruby_version  = '>= 2.0.0'
   # s.signing_key            = File.expand_path(pvt_key) if $PROGRAM_NAME.end_with?('gem')
   s.summary                = 'Sensu plugins for interfacing with Telegram messenger'
   s.test_files             = s.files.grep(%r{^(test|spec|features)/})
