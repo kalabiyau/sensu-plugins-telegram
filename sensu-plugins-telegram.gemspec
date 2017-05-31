@@ -31,7 +31,6 @@ Gem::Specification.new do |s|
   s.post_install_message   = 'You can use the embedded Ruby by setting EMBEDDED_RUBY=true in /etc/default/sensu'
   s.require_paths          = ['lib']
   s.required_ruby_version  = '>= 2.0.0'
-  # s.signing_key            = File.expand_path(pvt_key) if $PROGRAM_NAME.end_with?('gem')
   s.summary                = 'Sensu plugins for interfacing with Telegram messenger'
   s.test_files             = s.files.grep(%r{^(test|spec|features)/})
   s.version                = SensuPluginsTelegram::Version::VER_STRING
@@ -43,9 +42,9 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'codeclimate-test-reporter', '~> 0.4'
   s.add_development_dependency 'github-markup',             '~> 1.3'
   s.add_development_dependency 'pry',                       '~> 0.10'
-  s.add_development_dependency 'rake',                      '~> 10.0'
+  s.add_development_dependency 'rake',                      '~> 10.5'
   s.add_development_dependency 'redcarpet',                 '~> 3.2'
-  s.add_development_dependency 'rubocop',                   '0.37.0'
-  s.add_development_dependency 'rspec',                     '~> 3.1'
+  s.add_development_dependency 'rubocop',                   '~> 0.40.0'
+  s.add_development_dependency 'rspec',                     '~> 3.4'
   s.add_development_dependency 'yard',                      '~> 0.8'
 end
