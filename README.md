@@ -2,8 +2,6 @@
 
 [![Build Status](https://travis-ci.org/sensu-plugins/sensu-plugins-telegram.svg?branch=master)](https://travis-ci.org/sensu-plugins/sensu-plugins-telegram)
 [![Gem Version](https://badge.fury.io/rb/sensu-plugins-telegram.svg)](http://badge.fury.io/rb/sensu-plugins-telegram)
-[![Code Climate](https://codeclimate.com/github/sensu-plugins/sensu-plugins-telegram/badges/gpa.svg)](https://codeclimate.com/github/sensu-plugins/sensu-plugins-telegram)
-[![Test Coverage](https://codeclimate.com/github/sensu-plugins/sensu-plugins-telegram/badges/coverage.svg)](https://codeclimate.com/github/sensu-plugins/sensu-plugins-telegram)
 [![Dependency Status](https://gemnasium.com/sensu-plugins/sensu-plugins-telegram.svg)](https://gemnasium.com/sensu-plugins/sensu-plugins-telegram)
 
 ## Functionality
