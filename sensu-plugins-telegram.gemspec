@@ -35,7 +35,7 @@ Gem::Specification.new do |s|
   s.test_files             = s.files.grep(%r{^(test|spec|features)/})
   s.version                = SensuPluginsTelegram::Version::VER_STRING
 
-  s.add_runtime_dependency 'sensu-plugin', '~> 1.1'
+  s.add_runtime_dependency 'sensu-plugin', '>= 1.1', '< 3.0'
   s.add_runtime_dependency 'rest-client',  '~> 2.0.2'
 
   s.add_development_dependency 'bundler',                   '~> 1.7'
