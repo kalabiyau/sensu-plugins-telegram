@@ -4,8 +4,13 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 This CHANGELOG follows [this format](https://github.com/sensu-plugins/community/blob/master/HOW_WE_CHANGELOG.md).
 
 ## [Unreleased]
+
+## [3.0.0] - 2018-11-24
 ### Breaking Changes
 - Remove support for Ruby < 2.3 per the Sensu Plugins [policy](https://github.com/sensu/sensu-docs/blob/master/content/plugins/1.0/faq.md#what-is-the-policy-on-supporting-end-of-lifeeol-ruby-versions).
+- Update sensu-plugins to `~> 2.7`. Many breaking changes, see:
+  - [1.4.0](https://github.com/sensu-plugins/sensu-plugin/blob/master/CHANGELOG.md#v140---2016-07-20)
+  - [2.0.0](https://github.com/sensu-plugins/sensu-plugin/blob/master/CHANGELOG.md#v200---2017-03-29)
 
 ### Security
 - Updated Rubocop to `~> 0.60.0`, which fixes [CVE-2017-8418](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-8418).

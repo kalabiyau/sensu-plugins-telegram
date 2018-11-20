@@ -19,7 +19,8 @@ After installation, you have to set up a `pipe` type handler, like so:
   "handlers": {
     "telegram": {
       "type": "pipe",
-      "command": "handler-telegram.rb"
+      "command": "handler-telegram.rb",
+      "filter": "occurrences"
     }
   }
 }
