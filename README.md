@@ -42,8 +42,9 @@ This gem also expects a JSON configuration file with the following contents:
    [@BotFather](https://telegram.me/botfather).
 - `chat_id`: the chat to which the error message is to be sent.
   The bot must be a member of this channel or group.
-  You can get this chat_id by adding the bot to the corresponding group
-  and then accessing `https://api.telegram.org/bot<TOKEN>/getUpdates`.
+  You can get the `chat_id` by adding the bot to the corresponding group,
+  sending a message like `/fakecmd @your-bot-username`, and then accessing
+  `https://api.telegram.org/bot<TOKEN>/getUpdates`.
 - `error_file_location` (optional): in case there is a failure sending the
   message to Telegram (ie. connectivity issues), the exception mesage will
   be written to a file in this location. You can then monitor this
