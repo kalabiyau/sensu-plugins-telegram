@@ -1,4 +1,6 @@
 #!/usr/bin/env ruby
+# frozen_string_literal: true
+
 #
 #   handler-telegram
 #
@@ -143,11 +145,13 @@ class TelegramHandler < Sensu::Handler
   end
 
   def handle_error(exception)
-    open(error_file, 'w') do |f|
+    return unless error_file
+
+    File.open(error_file, 'w') do |f|
       f.puts 'URL: ' + telegram_url
       f.puts 'Params: ' + params.inspect
       f.puts 'Exception: ' + exception.inspect
-    end if error_file
+    end
   end
 
   def clear_error

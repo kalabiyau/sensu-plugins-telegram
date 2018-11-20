@@ -7,8 +7,13 @@ This CHANGELOG follows the format listed at [Keep A Changelog](http://keepachang
 ### Breaking Changes
 - Remove support for Ruby < 2.3 per the Sensu Plugins [policy](https://github.com/sensu/sensu-docs/blob/master/content/plugins/1.0/faq.md#what-is-the-policy-on-supporting-end-of-lifeeol-ruby-versions).
 
+### Security
+- Updated Rubocop to `~> 0.60.0`, which fixes [CVE-2017-8418](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-8418).
+- Updated Yard to `~> 0.9.11`, which fixes [CVE-2017-17042](https://nvd.nist.gov/vuln/detail/CVE-2017-17042).
+
 ### Changed
 - Relaxed the rest-client version, since it doesn't need to be so specific, and `gem build` was showing a warning.
+- Fixed cop violations
 
 ## [2.0.1] - 2017-07-29
 ### Fixed
@@ -33,9 +38,9 @@ This CHANGELOG follows the format listed at [Keep A Changelog](http://keepachang
 ## [0.2.0] - 2016-03-23
 ### Added
  - Emojis!
- - The json_config command line option, which lets you specify custom configs
+ - The `json_config` command line option, which lets you specify custom configs
    for different handlers.
- - the bot_token and error_file_location settings can also be specified
+ - the `bot_token` and `error_file_location` settings can also be specified
    directly in the event data.
 
 ### Fixed
