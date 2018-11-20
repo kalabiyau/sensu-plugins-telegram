@@ -7,7 +7,7 @@ This CHANGELOG follows the format listed at [Keep A Changelog](http://keepachang
 ### Breaking Changes
 - Remove support for Ruby < 2.3 per the Sensu Plugins [policy](https://github.com/sensu/sensu-docs/blob/master/content/plugins/1.0/faq.md#what-is-the-policy-on-supporting-end-of-lifeeol-ruby-versions).
 
-## [1.0.1] - 2017-07-29
+## [2.0.1] - 2017-07-29
 ### Fixed
 - use rest-client 2 to fix issue with OpenSSL 1.1.0 (@ushis)
 
