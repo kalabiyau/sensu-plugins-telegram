@@ -60,7 +60,8 @@ This CHANGELOG follows [this format](https://github.com/sensu-plugins/community/
 ### Added
 - Initial release
 
-[Unreleased]: https://github.com/sensu-plugins/sensu-plugins-telegram/compare/2.0.1...HEAD
+[Unreleased]: https://github.com/sensu-plugins/sensu-plugins-telegram/compare/3.0.0...HEAD
+[3.0.0]: https://github.com/sensu-plugins/sensu-plugins-telegram/compare/2.0.1...3.0.0
 [2.0.1]: https://github.com/sensu-plugins/sensu-plugins-telegram/compare/2.0.0...2.0.1
 [2.0.0]: https://github.com/sensu-plugins/sensu-plugins-telegram/compare/1.0.1...2.0.0
 [1.0.1]: https://github.com/sensu-plugins/sensu-plugins-telegram/compare/1.0.0...1.0.1
