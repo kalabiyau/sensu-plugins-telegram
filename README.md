@@ -17,10 +17,9 @@ After installation, you have to set up a `pipe` type handler, like so:
 ```json
 {
   "handlers": {
-    "telegram": {
+    "default": {
       "type": "pipe",
-      "command": "handler-telegram.rb",
-      "filter": "occurrences"
+      "command": "handler-telegram.rb"
     }
   }
 }
