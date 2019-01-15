@@ -26,6 +26,9 @@ After installation, you have to set up a `pipe` type handler, like so:
 }
 ```
 
+> Note: You need the `filter` key in there if you use the `occurrences` and/or the `refresh`
+attributes in your [check definitions](https://docs.sensu.io/sensu-core/1.6/reference/checks/).
+
 This gem also expects a JSON configuration file with the following contents:
 
 ```json
@@ -62,6 +65,25 @@ This gem also expects a JSON configuration file with the following contents:
 - `message_template_file` (optional): A file to read an ERB template from to
   format messages. Supports the same variables as `message_template`.
 
+### Check configuration
+
+You can then set up your checks to use the handler like this:
+
+```
+{
+  "checks": {
+    "sensu-website": {
+      "command": "check-http.rb -u https://sensuapp.org",
+      "subscribers": ["production"],
+      "interval": 60,
+      "handler": "telegram"
+    }
+  }
+}
+```
+
+For more information about configuring checks, see the
+[Sensu documentation](https://docs.sensu.io/sensu-core/1.6/reference/checks).
 
 ### Advanced configuration
 
